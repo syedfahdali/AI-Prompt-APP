@@ -1,12 +1,12 @@
-import "@styles/globals.css";
+"use client";
 import Nav from "@components/Nav";
+import Link from "next/link";
+import Image from "next/image";
 import Provider from "@components/Provider";
-import { children } from "react";
+import { children, useState, useEffect } from "react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
-export const metadata = {
-  title: "Promptopia",
-  description: "Discover and share AI Prompts",
-};
+
 
 const RootLayout = ({ children }) => {
   return (
@@ -17,7 +17,17 @@ const RootLayout = ({ children }) => {
         </div>
 
         <main className="app">
-          <Nav />
+          <Nav className="flex-between w-full pt-3 mb-16 ">
+            <Link href="/" className="flex gap-2 flex-center">
+              <Image
+                className="object-contain"
+                src="assets/images/logo.svg"
+                alt="Promptopia logo"
+                width={30}
+                height={30}
+              ></Image>
+            </Link>
+          </Nav>
           {children}
         </main>
       </body>
